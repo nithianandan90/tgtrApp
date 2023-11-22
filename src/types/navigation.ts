@@ -22,6 +22,7 @@ export type RootStackParamList = {
   SignIn: undefined;
   SignUp: undefined;
   Home: undefined;
+  TabOne: undefined;
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> =
@@ -29,7 +30,7 @@ export type RootStackScreenProps<Screen extends keyof RootStackParamList> =
 
 export type RootTabParamList = {
   TabOne: undefined;
-  TabTwo: undefined;
+  Profile: undefined;
   Chat: undefined;
   CreatePost: undefined;
 };
@@ -47,5 +48,10 @@ export type ChatStackNavigatorParamList = {
 
 export type ChatNavigationProp = NativeStackNavigationProp<
   ChatStackNavigatorParamList,
-  'Chats'
+  'Chat'
+>;
+
+export type CreateNavigationProp = NativeStackNavigationProp<
+  RootTabParamList,
+  'CreatePost'
 >;

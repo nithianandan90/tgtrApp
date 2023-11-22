@@ -58,6 +58,7 @@ export const getDeal = /* GraphQL */ `query GetDeal($id: ID!) {
     User {
       id
       name
+      sub
       image
       address
       lat
@@ -100,6 +101,7 @@ export const listDeals = /* GraphQL */ `query ListDeals(
       User {
         id
         name
+        sub
         image
         address
         lat
@@ -149,6 +151,7 @@ export const dealsByUserID = /* GraphQL */ `query DealsByUserID(
       User {
         id
         name
+        sub
         image
         address
         lat
@@ -176,6 +179,7 @@ export const getUser = /* GraphQL */ `query GetUser($id: ID!) {
   getUser(id: $id) {
     id
     name
+    sub
     image
     address
     lat
@@ -218,6 +222,7 @@ export const listUsers = /* GraphQL */ `query ListUsers(
     items {
       id
       name
+      sub
       image
       address
       lat

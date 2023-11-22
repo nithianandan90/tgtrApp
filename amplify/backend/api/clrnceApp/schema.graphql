@@ -24,6 +24,7 @@ type Deal @model @auth(rules: [{allow: public}]) {
 type User @model @auth(rules: [{allow: public}]) {
   id: ID!
   name: String
+  sub: String
   image: String
   address: String
   lat: Float

@@ -72,6 +72,7 @@ export const onCreateDeal = /* GraphQL */ `subscription OnCreateDeal($filter: Mo
     User {
       id
       name
+      sub
       image
       address
       lat
@@ -112,6 +113,7 @@ export const onUpdateDeal = /* GraphQL */ `subscription OnUpdateDeal($filter: Mo
     User {
       id
       name
+      sub
       image
       address
       lat
@@ -152,6 +154,7 @@ export const onDeleteDeal = /* GraphQL */ `subscription OnDeleteDeal($filter: Mo
     User {
       id
       name
+      sub
       image
       address
       lat
@@ -180,6 +183,7 @@ export const onCreateUser = /* GraphQL */ `subscription OnCreateUser($filter: Mo
   onCreateUser(filter: $filter) {
     id
     name
+    sub
     image
     address
     lat
@@ -220,6 +224,7 @@ export const onUpdateUser = /* GraphQL */ `subscription OnUpdateUser($filter: Mo
   onUpdateUser(filter: $filter) {
     id
     name
+    sub
     image
     address
     lat
@@ -260,6 +265,7 @@ export const onDeleteUser = /* GraphQL */ `subscription OnDeleteUser($filter: Mo
   onDeleteUser(filter: $filter) {
     id
     name
+    sub
     image
     address
     lat

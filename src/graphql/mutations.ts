@@ -84,6 +84,7 @@ export const createDeal = /* GraphQL */ `mutation CreateDeal(
     User {
       id
       name
+      sub
       image
       address
       lat
@@ -127,6 +128,7 @@ export const updateDeal = /* GraphQL */ `mutation UpdateDeal(
     User {
       id
       name
+      sub
       image
       address
       lat
@@ -170,6 +172,7 @@ export const deleteDeal = /* GraphQL */ `mutation DeleteDeal(
     User {
       id
       name
+      sub
       image
       address
       lat
@@ -201,6 +204,7 @@ export const createUser = /* GraphQL */ `mutation CreateUser(
   createUser(input: $input, condition: $condition) {
     id
     name
+    sub
     image
     address
     lat
@@ -244,6 +248,7 @@ export const updateUser = /* GraphQL */ `mutation UpdateUser(
   updateUser(input: $input, condition: $condition) {
     id
     name
+    sub
     image
     address
     lat
@@ -287,6 +292,7 @@ export const deleteUser = /* GraphQL */ `mutation DeleteUser(
   deleteUser(input: $input, condition: $condition) {
     id
     name
+    sub
     image
     address
     lat

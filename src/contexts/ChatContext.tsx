@@ -4,7 +4,14 @@ import {useAuthContext} from './AuthContext';
 import {OverlayProvider, Chat} from 'stream-chat-react-native';
 import {ActivityIndicator} from 'react-native';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
-export const ChatContext = createContext({});
+
+type ChatContextType = {
+  currentChannel?: Channel;
+};
+
+export const ChatContext = createContext<ChatContextType>({
+  currentChannel: undefined,
+});
 
 const ChatContextProvider = ({children}: {children: React.ReactNode}) => {
   const {userAttributes} = useAuthContext();
@@ -23,6 +30,8 @@ const ChatContextProvider = ({children}: {children: React.ReactNode}) => {
       }
       const client = StreamChat.getInstance('ebj4kzbc3uy5');
 
+      console.log('client', client);
+
       // get information about the authenticated user
 
       // connect the user to the stream chat
@@ -39,13 +48,13 @@ const ChatContextProvider = ({children}: {children: React.ReactNode}) => {
 
       setChatClient(client);
 
-      // const globalChannel = client.channel('livestream', 'global', {
-      //   name: 'SubangChat',
-      //   image:
-      //     'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/1.jpg',
-      // });
+      const globalChannel = client.channel('livestream', 'global', {
+        name: 'SubangChat',
+        image:
+          'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/1.jpg',
+      });
 
-      // await globalChannel.watch();
+      await globalChannel.watch();
     };
 
     initChat();
@@ -59,21 +68,50 @@ const ChatContextProvider = ({children}: {children: React.ReactNode}) => {
     };
   }, []);
 
-  const createChat = async chatName => {
-    const client = StreamChat.getInstance('ebj4kzbc3uy5');
-    const globalChannel = client.channel('livestream', 'global', {
-      name: chatName,
+  // const createChat = async chatName => {
+  //   console.log('arrived at createChat');
+
+  //   try {
+  //     if (!chatClient) {
+  //       console.log('no chat client');
+  //       return;
+  //     }
+  //     const globalChannel = chatClient.channel('livestream', 'newchat', {
+  //       name: chatName,
+  //       image:
+  //         'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/1.jpg',
+  //     });
+
+  //     console.log('global channel', globalChannel);
+  //     await globalChannel.create();
+
+  //     await globalChannel.watch();
+  //   } catch (e) {
+  //     console.log('error', e);
+  //   }
+  // };
+
+  console.log('chat client', chatClient);
+
+  const startChatRoom = async (roomID, roomName) => {
+    if (!chatClient) {
+      return;
+    }
+    console.log('starting a chat room');
+    const newChannel = chatClient?.channel('livestream', roomID, {
+      name: roomName,
       image:
         'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/1.jpg',
     });
-    await globalChannel.create();
-
-    await globalChannel.watch();
+    const response = await newChannel.create();
   };
 
-  const value = {chatClient, currentChannel, setCurrentChannel, createChat};
-
-  console.log('chat client', chatClient);
+  const value = {
+    chatClient,
+    currentChannel,
+    setCurrentChannel,
+    startChatRoom,
+  };
 
   if (!chatClient) {
     return <ActivityIndicator />;

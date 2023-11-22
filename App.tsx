@@ -17,6 +17,7 @@ import ChatScreen from './src/screens/Chats/ChatsScreen';
 import AuthContextProvider from './src/contexts/AuthContext';
 import Navigation from './src/navigation';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import ChatContextProvider from './src/contexts/ChatContext';
 
 Amplify.configure(amplifyconfig);
 
@@ -24,11 +25,13 @@ const App = () => {
   return (
     <SafeAreaView style={{flex: 1}}>
       <GestureHandlerRootView style={{flex: 1}}>
-        <AuthContextProvider>
-          <Client>
-            <Navigation />
-          </Client>
-        </AuthContextProvider>
+        <Client>
+          <AuthContextProvider>
+            <ChatContextProvider>
+              <Navigation />
+            </ChatContextProvider>
+          </AuthContextProvider>
+        </Client>
       </GestureHandlerRootView>
     </SafeAreaView>
   );

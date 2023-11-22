@@ -11,7 +11,9 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import ChatStackNavigator from './ChatStackNavigator';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import HomeScreen from '../screens/HomeScreen/HomeScreen';
-import CreatPostScreen from '../screens/CreatePostScreen/CreatPostScreen';
+import CreateEventScreen from '../screens/CreateEventScreen/CreateEventScreen';
+import ProfileScreen from '../screens/ProfileScreen/ProfileScreen';
+import ChatContextProvider from '../contexts/ChatContext';
 
 const BottomTab = createBottomTabNavigator<RootTabParamList>();
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -32,7 +34,7 @@ const BottomTabNavigator = () => {
       />
       <BottomTab.Screen
         name="CreatePost"
-        component={CreatPostScreen}
+        component={CreateEventScreen}
         options={{
           title: 'Create Event',
           tabBarIcon: ({color}) => (
@@ -40,7 +42,7 @@ const BottomTabNavigator = () => {
           ),
         }}
       />
-      <BottomTab.Screen name="TabTwo" component={HomeScreen} />
+      <BottomTab.Screen name="Profile" component={ProfileScreen} />
     </BottomTab.Navigator>
   );
 };

@@ -38,8 +38,9 @@ const listUsers = gql`
 `;
 
 const ChatsScreen = () => {
-  const {setCurrentChannel} = useChatContext();
+  const {setCurrentChannel, chatClient} = useChatContext();
 
+  console.log('chatClient', chatClient);
   const navigation = useNavigation<ChatNavigationProp>();
 
   const {data, loading, error} = useQuery<

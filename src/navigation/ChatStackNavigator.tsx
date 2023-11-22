@@ -7,11 +7,9 @@ const Stack = createNativeStackNavigator();
 
 export default () => {
   return (
-    <ChatContextProvider>
-      <Stack.Navigator>
-        <Stack.Screen name="Chats" component={ChatsScreen} />
-        <Stack.Screen name="ChatRoom" component={ChatRoomScreen} />
-      </Stack.Navigator>
-    </ChatContextProvider>
+    <Stack.Navigator>
+      <Stack.Screen name="Chats" component={ChatsScreen} />
+      <Stack.Screen name="ChatRoom" component={ChatRoomScreen} />
+    </Stack.Navigator>
   );
 };
