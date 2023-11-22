@@ -8,6 +8,7 @@ export type CreateItemInput = {
   price?: string | null,
   description?: string | null,
   image?: string | null,
+  _version?: number | null,
 };
 
 export type ModelItemConditionInput = {
@@ -18,6 +19,7 @@ export type ModelItemConditionInput = {
   and?: Array< ModelItemConditionInput | null > | null,
   or?: Array< ModelItemConditionInput | null > | null,
   not?: ModelItemConditionInput | null,
+  _deleted?: ModelBooleanInput | null,
 };
 
 export type ModelStringInput = {
@@ -60,6 +62,13 @@ export type ModelSizeInput = {
   between?: Array< number | null > | null,
 };
 
+export type ModelBooleanInput = {
+  ne?: boolean | null,
+  eq?: boolean | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
+};
+
 export type Item = {
   __typename: "Item",
   id: string,
@@ -69,6 +78,9 @@ export type Item = {
   image?: string | null,
   createdAt: string,
   updatedAt: string,
+  _version: number,
+  _deleted?: boolean | null,
+  _lastChangedAt: number,
 };
 
 export type UpdateItemInput = {
@@ -77,10 +89,12 @@ export type UpdateItemInput = {
   price?: string | null,
   description?: string | null,
   image?: string | null,
+  _version?: number | null,
 };
 
 export type DeleteItemInput = {
   id: string,
+  _version?: number | null,
 };
 
 export type CreateDealInput = {
@@ -95,6 +109,7 @@ export type CreateDealInput = {
   maxRadius?: number | null,
   expiryDate?: string | null,
   userID: string,
+  _version?: number | null,
 };
 
 export type ModelDealConditionInput = {
@@ -111,6 +126,7 @@ export type ModelDealConditionInput = {
   and?: Array< ModelDealConditionInput | null > | null,
   or?: Array< ModelDealConditionInput | null > | null,
   not?: ModelDealConditionInput | null,
+  _deleted?: ModelBooleanInput | null,
 };
 
 export type ModelFloatInput = {
@@ -157,6 +173,9 @@ export type Deal = {
   User?: User | null,
   createdAt: string,
   updatedAt: string,
+  _version: number,
+  _deleted?: boolean | null,
+  _lastChangedAt: number,
 };
 
 export type User = {
@@ -174,12 +193,16 @@ export type User = {
   Deals?: ModelDealConnection | null,
   createdAt: string,
   updatedAt: string,
+  _version: number,
+  _deleted?: boolean | null,
+  _lastChangedAt: number,
 };
 
 export type ModelDealConnection = {
   __typename: "ModelDealConnection",
   items:  Array<Deal | null >,
   nextToken?: string | null,
+  startedAt?: number | null,
 };
 
 export type UpdateDealInput = {
@@ -194,10 +217,12 @@ export type UpdateDealInput = {
   maxRadius?: number | null,
   expiryDate?: string | null,
   userID?: string | null,
+  _version?: number | null,
 };
 
 export type DeleteDealInput = {
   id: string,
+  _version?: number | null,
 };
 
 export type CreateUserInput = {
@@ -211,6 +236,7 @@ export type CreateUserInput = {
   email?: string | null,
   fcmToken?: string | null,
   status?: string | null,
+  _version?: number | null,
 };
 
 export type ModelUserConditionInput = {
@@ -226,6 +252,7 @@ export type ModelUserConditionInput = {
   and?: Array< ModelUserConditionInput | null > | null,
   or?: Array< ModelUserConditionInput | null > | null,
   not?: ModelUserConditionInput | null,
+  _deleted?: ModelBooleanInput | null,
 };
 
 export type UpdateUserInput = {
@@ -239,10 +266,12 @@ export type UpdateUserInput = {
   email?: string | null,
   fcmToken?: string | null,
   status?: string | null,
+  _version?: number | null,
 };
 
 export type DeleteUserInput = {
   id: string,
+  _version?: number | null,
 };
 
 export type ModelItemFilterInput = {
@@ -254,12 +283,14 @@ export type ModelItemFilterInput = {
   and?: Array< ModelItemFilterInput | null > | null,
   or?: Array< ModelItemFilterInput | null > | null,
   not?: ModelItemFilterInput | null,
+  _deleted?: ModelBooleanInput | null,
 };
 
 export type ModelItemConnection = {
   __typename: "ModelItemConnection",
   items:  Array<Item | null >,
   nextToken?: string | null,
+  startedAt?: number | null,
 };
 
 export type ModelDealFilterInput = {
@@ -277,6 +308,7 @@ export type ModelDealFilterInput = {
   and?: Array< ModelDealFilterInput | null > | null,
   or?: Array< ModelDealFilterInput | null > | null,
   not?: ModelDealFilterInput | null,
+  _deleted?: ModelBooleanInput | null,
 };
 
 export enum ModelSortDirection {
@@ -299,12 +331,14 @@ export type ModelUserFilterInput = {
   and?: Array< ModelUserFilterInput | null > | null,
   or?: Array< ModelUserFilterInput | null > | null,
   not?: ModelUserFilterInput | null,
+  _deleted?: ModelBooleanInput | null,
 };
 
 export type ModelUserConnection = {
   __typename: "ModelUserConnection",
   items:  Array<User | null >,
   nextToken?: string | null,
+  startedAt?: number | null,
 };
 
 export type ModelSubscriptionItemFilterInput = {
@@ -315,6 +349,7 @@ export type ModelSubscriptionItemFilterInput = {
   image?: ModelSubscriptionStringInput | null,
   and?: Array< ModelSubscriptionItemFilterInput | null > | null,
   or?: Array< ModelSubscriptionItemFilterInput | null > | null,
+  _deleted?: ModelBooleanInput | null,
 };
 
 export type ModelSubscriptionIDInput = {
@@ -361,6 +396,7 @@ export type ModelSubscriptionDealFilterInput = {
   userID?: ModelSubscriptionIDInput | null,
   and?: Array< ModelSubscriptionDealFilterInput | null > | null,
   or?: Array< ModelSubscriptionDealFilterInput | null > | null,
+  _deleted?: ModelBooleanInput | null,
 };
 
 export type ModelSubscriptionFloatInput = {
@@ -388,6 +424,7 @@ export type ModelSubscriptionUserFilterInput = {
   status?: ModelSubscriptionStringInput | null,
   and?: Array< ModelSubscriptionUserFilterInput | null > | null,
   or?: Array< ModelSubscriptionUserFilterInput | null > | null,
+  _deleted?: ModelBooleanInput | null,
 };
 
 export type CreateItemMutationVariables = {
@@ -405,6 +442,9 @@ export type CreateItemMutation = {
     image?: string | null,
     createdAt: string,
     updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
   } | null,
 };
 
@@ -423,6 +463,9 @@ export type UpdateItemMutation = {
     image?: string | null,
     createdAt: string,
     updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
   } | null,
 };
 
@@ -441,6 +484,9 @@ export type DeleteItemMutation = {
     image?: string | null,
     createdAt: string,
     updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
   } | null,
 };
 
@@ -478,12 +524,19 @@ export type CreateDealMutation = {
       Deals?:  {
         __typename: "ModelDealConnection",
         nextToken?: string | null,
+        startedAt?: number | null,
       } | null,
       createdAt: string,
       updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
     } | null,
     createdAt: string,
     updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
   } | null,
 };
 
@@ -521,12 +574,19 @@ export type UpdateDealMutation = {
       Deals?:  {
         __typename: "ModelDealConnection",
         nextToken?: string | null,
+        startedAt?: number | null,
       } | null,
       createdAt: string,
       updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
     } | null,
     createdAt: string,
     updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
   } | null,
 };
 
@@ -564,12 +624,19 @@ export type DeleteDealMutation = {
       Deals?:  {
         __typename: "ModelDealConnection",
         nextToken?: string | null,
+        startedAt?: number | null,
       } | null,
       createdAt: string,
       updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
     } | null,
     createdAt: string,
     updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
   } | null,
 };
 
@@ -608,11 +675,18 @@ export type CreateUserMutation = {
         userID: string,
         createdAt: string,
         updatedAt: string,
+        _version: number,
+        _deleted?: boolean | null,
+        _lastChangedAt: number,
       } | null >,
       nextToken?: string | null,
+      startedAt?: number | null,
     } | null,
     createdAt: string,
     updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
   } | null,
 };
 
@@ -651,11 +725,18 @@ export type UpdateUserMutation = {
         userID: string,
         createdAt: string,
         updatedAt: string,
+        _version: number,
+        _deleted?: boolean | null,
+        _lastChangedAt: number,
       } | null >,
       nextToken?: string | null,
+      startedAt?: number | null,
     } | null,
     createdAt: string,
     updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
   } | null,
 };
 
@@ -694,11 +775,18 @@ export type DeleteUserMutation = {
         userID: string,
         createdAt: string,
         updatedAt: string,
+        _version: number,
+        _deleted?: boolean | null,
+        _lastChangedAt: number,
       } | null >,
       nextToken?: string | null,
+      startedAt?: number | null,
     } | null,
     createdAt: string,
     updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
   } | null,
 };
 
@@ -716,6 +804,9 @@ export type GetItemQuery = {
     image?: string | null,
     createdAt: string,
     updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
   } | null,
 };
 
@@ -737,8 +828,40 @@ export type ListItemsQuery = {
       image?: string | null,
       createdAt: string,
       updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
     } | null >,
     nextToken?: string | null,
+    startedAt?: number | null,
+  } | null,
+};
+
+export type SyncItemsQueryVariables = {
+  filter?: ModelItemFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+  lastSync?: number | null,
+};
+
+export type SyncItemsQuery = {
+  syncItems?:  {
+    __typename: "ModelItemConnection",
+    items:  Array< {
+      __typename: "Item",
+      id: string,
+      name?: string | null,
+      price?: string | null,
+      description?: string | null,
+      image?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
+    } | null >,
+    nextToken?: string | null,
+    startedAt?: number | null,
   } | null,
 };
 
@@ -775,12 +898,19 @@ export type GetDealQuery = {
       Deals?:  {
         __typename: "ModelDealConnection",
         nextToken?: string | null,
+        startedAt?: number | null,
       } | null,
       createdAt: string,
       updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
     } | null,
     createdAt: string,
     updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
   } | null,
 };
 
@@ -820,11 +950,70 @@ export type ListDealsQuery = {
         status?: string | null,
         createdAt: string,
         updatedAt: string,
+        _version: number,
+        _deleted?: boolean | null,
+        _lastChangedAt: number,
       } | null,
       createdAt: string,
       updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
     } | null >,
     nextToken?: string | null,
+    startedAt?: number | null,
+  } | null,
+};
+
+export type SyncDealsQueryVariables = {
+  filter?: ModelDealFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+  lastSync?: number | null,
+};
+
+export type SyncDealsQuery = {
+  syncDeals?:  {
+    __typename: "ModelDealConnection",
+    items:  Array< {
+      __typename: "Deal",
+      id: string,
+      lat?: number | null,
+      lng?: number | null,
+      radius?: string | null,
+      title?: string | null,
+      description?: string | null,
+      location?: string | null,
+      image?: string | null,
+      maxRadius?: number | null,
+      expiryDate?: string | null,
+      userID: string,
+      User?:  {
+        __typename: "User",
+        id: string,
+        name?: string | null,
+        sub?: string | null,
+        image?: string | null,
+        address?: string | null,
+        lat?: number | null,
+        lng?: number | null,
+        email?: string | null,
+        fcmToken?: string | null,
+        status?: string | null,
+        createdAt: string,
+        updatedAt: string,
+        _version: number,
+        _deleted?: boolean | null,
+        _lastChangedAt: number,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
+    } | null >,
+    nextToken?: string | null,
+    startedAt?: number | null,
   } | null,
 };
 
@@ -866,11 +1055,18 @@ export type DealsByUserIDQuery = {
         status?: string | null,
         createdAt: string,
         updatedAt: string,
+        _version: number,
+        _deleted?: boolean | null,
+        _lastChangedAt: number,
       } | null,
       createdAt: string,
       updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
     } | null >,
     nextToken?: string | null,
+    startedAt?: number | null,
   } | null,
 };
 
@@ -908,11 +1104,18 @@ export type GetUserQuery = {
         userID: string,
         createdAt: string,
         updatedAt: string,
+        _version: number,
+        _deleted?: boolean | null,
+        _lastChangedAt: number,
       } | null >,
       nextToken?: string | null,
+      startedAt?: number | null,
     } | null,
     createdAt: string,
     updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
   } | null,
 };
 
@@ -940,11 +1143,54 @@ export type ListUsersQuery = {
       Deals?:  {
         __typename: "ModelDealConnection",
         nextToken?: string | null,
+        startedAt?: number | null,
       } | null,
       createdAt: string,
       updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
     } | null >,
     nextToken?: string | null,
+    startedAt?: number | null,
+  } | null,
+};
+
+export type SyncUsersQueryVariables = {
+  filter?: ModelUserFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+  lastSync?: number | null,
+};
+
+export type SyncUsersQuery = {
+  syncUsers?:  {
+    __typename: "ModelUserConnection",
+    items:  Array< {
+      __typename: "User",
+      id: string,
+      name?: string | null,
+      sub?: string | null,
+      image?: string | null,
+      address?: string | null,
+      lat?: number | null,
+      lng?: number | null,
+      email?: string | null,
+      fcmToken?: string | null,
+      status?: string | null,
+      Deals?:  {
+        __typename: "ModelDealConnection",
+        nextToken?: string | null,
+        startedAt?: number | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
+    } | null >,
+    nextToken?: string | null,
+    startedAt?: number | null,
   } | null,
 };
 
@@ -962,6 +1208,9 @@ export type OnCreateItemSubscription = {
     image?: string | null,
     createdAt: string,
     updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
   } | null,
 };
 
@@ -979,6 +1228,9 @@ export type OnUpdateItemSubscription = {
     image?: string | null,
     createdAt: string,
     updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
   } | null,
 };
 
@@ -996,6 +1248,9 @@ export type OnDeleteItemSubscription = {
     image?: string | null,
     createdAt: string,
     updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
   } | null,
 };
 
@@ -1032,12 +1287,19 @@ export type OnCreateDealSubscription = {
       Deals?:  {
         __typename: "ModelDealConnection",
         nextToken?: string | null,
+        startedAt?: number | null,
       } | null,
       createdAt: string,
       updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
     } | null,
     createdAt: string,
     updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
   } | null,
 };
 
@@ -1074,12 +1336,19 @@ export type OnUpdateDealSubscription = {
       Deals?:  {
         __typename: "ModelDealConnection",
         nextToken?: string | null,
+        startedAt?: number | null,
       } | null,
       createdAt: string,
       updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
     } | null,
     createdAt: string,
     updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
   } | null,
 };
 
@@ -1116,12 +1385,19 @@ export type OnDeleteDealSubscription = {
       Deals?:  {
         __typename: "ModelDealConnection",
         nextToken?: string | null,
+        startedAt?: number | null,
       } | null,
       createdAt: string,
       updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
     } | null,
     createdAt: string,
     updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
   } | null,
 };
 
@@ -1159,11 +1435,18 @@ export type OnCreateUserSubscription = {
         userID: string,
         createdAt: string,
         updatedAt: string,
+        _version: number,
+        _deleted?: boolean | null,
+        _lastChangedAt: number,
       } | null >,
       nextToken?: string | null,
+      startedAt?: number | null,
     } | null,
     createdAt: string,
     updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
   } | null,
 };
 
@@ -1201,11 +1484,18 @@ export type OnUpdateUserSubscription = {
         userID: string,
         createdAt: string,
         updatedAt: string,
+        _version: number,
+        _deleted?: boolean | null,
+        _lastChangedAt: number,
       } | null >,
       nextToken?: string | null,
+      startedAt?: number | null,
     } | null,
     createdAt: string,
     updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
   } | null,
 };
 
@@ -1243,10 +1533,17 @@ export type OnDeleteUserSubscription = {
         userID: string,
         createdAt: string,
         updatedAt: string,
+        _version: number,
+        _deleted?: boolean | null,
+        _lastChangedAt: number,
       } | null >,
       nextToken?: string | null,
+      startedAt?: number | null,
     } | null,
     createdAt: string,
     updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
   } | null,
 };

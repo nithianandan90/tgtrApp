@@ -21,7 +21,13 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 const BottomTabNavigator = () => {
   return (
     <BottomTab.Navigator initialRouteName="TabOne">
-      <BottomTab.Screen name="TabOne" component={HomeScreen} />
+      <BottomTab.Screen
+        name="TabOne"
+        component={HomeScreen}
+        options={{
+          headerTitle: 'All Volunteer Events',
+        }}
+      />
       <BottomTab.Screen
         name="Chat"
         component={ChatStackNavigator}

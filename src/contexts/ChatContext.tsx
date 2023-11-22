@@ -19,7 +19,7 @@ const ChatContextProvider = ({children}: {children: React.ReactNode}) => {
   const [chatClient, setChatClient] = useState<StreamChat>();
   const [currentChannel, setCurrentChannel] = useState<Channel>();
 
-  console.log('attributes chat context', userAttributes);
+  console.log('attributes chat context', chatClient);
 
   useEffect(() => {
     const initChat = async () => {

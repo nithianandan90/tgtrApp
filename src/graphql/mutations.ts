@@ -20,6 +20,9 @@ export const createItem = /* GraphQL */ `mutation CreateItem(
     image
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
     __typename
   }
 }
@@ -39,6 +42,9 @@ export const updateItem = /* GraphQL */ `mutation UpdateItem(
     image
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
     __typename
   }
 }
@@ -58,6 +64,9 @@ export const deleteItem = /* GraphQL */ `mutation DeleteItem(
     image
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
     __typename
   }
 }
@@ -94,14 +103,21 @@ export const createDeal = /* GraphQL */ `mutation CreateDeal(
       status
       Deals {
         nextToken
+        startedAt
         __typename
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
     __typename
   }
 }
@@ -138,14 +154,21 @@ export const updateDeal = /* GraphQL */ `mutation UpdateDeal(
       status
       Deals {
         nextToken
+        startedAt
         __typename
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
     __typename
   }
 }
@@ -182,14 +205,21 @@ export const deleteDeal = /* GraphQL */ `mutation DeleteDeal(
       status
       Deals {
         nextToken
+        startedAt
         __typename
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
     __typename
   }
 }
@@ -227,13 +257,20 @@ export const createUser = /* GraphQL */ `mutation CreateUser(
         userID
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
         __typename
       }
       nextToken
+      startedAt
       __typename
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
     __typename
   }
 }
@@ -271,13 +308,20 @@ export const updateUser = /* GraphQL */ `mutation UpdateUser(
         userID
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
         __typename
       }
       nextToken
+      startedAt
       __typename
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
     __typename
   }
 }
@@ -315,13 +359,20 @@ export const deleteUser = /* GraphQL */ `mutation DeleteUser(
         userID
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
         __typename
       }
       nextToken
+      startedAt
       __typename
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
     __typename
   }
 }

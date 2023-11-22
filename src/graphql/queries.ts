@@ -17,6 +17,9 @@ export const getItem = /* GraphQL */ `query GetItem($id: ID!) {
     image
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
     __typename
   }
 }
@@ -35,13 +38,48 @@ export const listItems = /* GraphQL */ `query ListItems(
       image
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
     nextToken
+    startedAt
     __typename
   }
 }
 ` as GeneratedQuery<APITypes.ListItemsQueryVariables, APITypes.ListItemsQuery>;
+export const syncItems = /* GraphQL */ `query SyncItems(
+  $filter: ModelItemFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncItems(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      name
+      price
+      description
+      image
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+    nextToken
+    startedAt
+    __typename
+  }
+}
+` as GeneratedQuery<APITypes.SyncItemsQueryVariables, APITypes.SyncItemsQuery>;
 export const getDeal = /* GraphQL */ `query GetDeal($id: ID!) {
   getDeal(id: $id) {
     id
@@ -68,14 +106,21 @@ export const getDeal = /* GraphQL */ `query GetDeal($id: ID!) {
       status
       Deals {
         nextToken
+        startedAt
         __typename
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
     __typename
   }
 }
@@ -111,17 +156,79 @@ export const listDeals = /* GraphQL */ `query ListDeals(
         status
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
         __typename
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
     nextToken
+    startedAt
     __typename
   }
 }
 ` as GeneratedQuery<APITypes.ListDealsQueryVariables, APITypes.ListDealsQuery>;
+export const syncDeals = /* GraphQL */ `query SyncDeals(
+  $filter: ModelDealFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncDeals(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      lat
+      lng
+      radius
+      title
+      description
+      location
+      image
+      maxRadius
+      expiryDate
+      userID
+      User {
+        id
+        name
+        sub
+        image
+        address
+        lat
+        lng
+        email
+        fcmToken
+        status
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+    nextToken
+    startedAt
+    __typename
+  }
+}
+` as GeneratedQuery<APITypes.SyncDealsQueryVariables, APITypes.SyncDealsQuery>;
 export const dealsByUserID = /* GraphQL */ `query DealsByUserID(
   $userID: ID!
   $sortDirection: ModelSortDirection
@@ -161,13 +268,20 @@ export const dealsByUserID = /* GraphQL */ `query DealsByUserID(
         status
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
         __typename
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
     nextToken
+    startedAt
     __typename
   }
 }
@@ -202,13 +316,20 @@ export const getUser = /* GraphQL */ `query GetUser($id: ID!) {
         userID
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
         __typename
       }
       nextToken
+      startedAt
       __typename
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
     __typename
   }
 }
@@ -232,14 +353,60 @@ export const listUsers = /* GraphQL */ `query ListUsers(
       status
       Deals {
         nextToken
+        startedAt
         __typename
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
     nextToken
+    startedAt
     __typename
   }
 }
 ` as GeneratedQuery<APITypes.ListUsersQueryVariables, APITypes.ListUsersQuery>;
+export const syncUsers = /* GraphQL */ `query SyncUsers(
+  $filter: ModelUserFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncUsers(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      name
+      sub
+      image
+      address
+      lat
+      lng
+      email
+      fcmToken
+      status
+      Deals {
+        nextToken
+        startedAt
+        __typename
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+    nextToken
+    startedAt
+    __typename
+  }
+}
+` as GeneratedQuery<APITypes.SyncUsersQueryVariables, APITypes.SyncUsersQuery>;

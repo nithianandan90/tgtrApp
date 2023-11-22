@@ -17,6 +17,9 @@ export const onCreateItem = /* GraphQL */ `subscription OnCreateItem($filter: Mo
     image
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
     __typename
   }
 }
@@ -33,6 +36,9 @@ export const onUpdateItem = /* GraphQL */ `subscription OnUpdateItem($filter: Mo
     image
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
     __typename
   }
 }
@@ -49,6 +55,9 @@ export const onDeleteItem = /* GraphQL */ `subscription OnDeleteItem($filter: Mo
     image
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
     __typename
   }
 }
@@ -82,14 +91,21 @@ export const onCreateDeal = /* GraphQL */ `subscription OnCreateDeal($filter: Mo
       status
       Deals {
         nextToken
+        startedAt
         __typename
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
     __typename
   }
 }
@@ -123,14 +139,21 @@ export const onUpdateDeal = /* GraphQL */ `subscription OnUpdateDeal($filter: Mo
       status
       Deals {
         nextToken
+        startedAt
         __typename
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
     __typename
   }
 }
@@ -164,14 +187,21 @@ export const onDeleteDeal = /* GraphQL */ `subscription OnDeleteDeal($filter: Mo
       status
       Deals {
         nextToken
+        startedAt
         __typename
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
     __typename
   }
 }
@@ -206,13 +236,20 @@ export const onCreateUser = /* GraphQL */ `subscription OnCreateUser($filter: Mo
         userID
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
         __typename
       }
       nextToken
+      startedAt
       __typename
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
     __typename
   }
 }
@@ -247,13 +284,20 @@ export const onUpdateUser = /* GraphQL */ `subscription OnUpdateUser($filter: Mo
         userID
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
         __typename
       }
       nextToken
+      startedAt
       __typename
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
     __typename
   }
 }
@@ -288,13 +332,20 @@ export const onDeleteUser = /* GraphQL */ `subscription OnDeleteUser($filter: Mo
         userID
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
         __typename
       }
       nextToken
+      startedAt
       __typename
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
     __typename
   }
 }
