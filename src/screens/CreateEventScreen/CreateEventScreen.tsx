@@ -171,13 +171,13 @@ const CreateEventScreen = () => {
           <MaterialIcons name="photo-library" size={30} color={'black'} />
         </Pressable>
         <TextInput
-          placeholder="Description..."
+          placeholder="Title..."
           style={styles.input}
           value={title}
           onChangeText={setTitle}
         />
         <TextInput
-          placeholder="Title..."
+          placeholder="Description..."
           style={styles.input}
           value={description}
           onChangeText={setDescription}

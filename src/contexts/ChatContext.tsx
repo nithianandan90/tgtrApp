@@ -30,8 +30,6 @@ const ChatContextProvider = ({children}: {children: React.ReactNode}) => {
       }
       const client = StreamChat.getInstance('ebj4kzbc3uy5');
 
-      console.log('client', client);
-
       // get information about the authenticated user
 
       // connect the user to the stream chat
@@ -58,7 +56,7 @@ const ChatContextProvider = ({children}: {children: React.ReactNode}) => {
     };
 
     initChat();
-  }, []);
+  }, [userAttributes]);
 
   useEffect(() => {
     return () => {

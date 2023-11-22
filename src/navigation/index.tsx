@@ -10,6 +10,8 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import ChatStackNavigator from './ChatStackNavigator';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import HomeScreen from '../screens/HomeScreen/HomeScreen';
 import CreateEventScreen from '../screens/CreateEventScreen/CreateEventScreen';
 import ProfileScreen from '../screens/ProfileScreen/ProfileScreen';
@@ -26,6 +28,10 @@ const BottomTabNavigator = () => {
         component={HomeScreen}
         options={{
           headerTitle: 'All Volunteer Events',
+          title: 'Events',
+          tabBarIcon: ({color}) => (
+            <MaterialIcons name="event" size={24} color={color} />
+          ),
         }}
       />
       <BottomTab.Screen
@@ -48,7 +54,16 @@ const BottomTabNavigator = () => {
           ),
         }}
       />
-      <BottomTab.Screen name="Profile" component={ProfileScreen} />
+      <BottomTab.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{
+          title: 'Profile',
+          tabBarIcon: ({color}) => (
+            <AntDesign name="user" size={24} color={color} />
+          ),
+        }}
+      />
     </BottomTab.Navigator>
   );
 };

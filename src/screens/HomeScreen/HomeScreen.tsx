@@ -6,7 +6,7 @@ import {listDeals} from './queries';
 import {ListDealsQuery, ListDealsQueryVariables} from '../../API';
 
 const HomeScreen = () => {
-  const {data, loading, error} = useQuery<
+  const {data, loading, error, refetch} = useQuery<
     ListDealsQuery,
     ListDealsQueryVariables
   >(listDeals);
@@ -21,6 +21,8 @@ const HomeScreen = () => {
       <FlatList
         data={events}
         renderItem={({item}) => item && <FeedPost event={item} />}
+        onRefresh={() => refetch()}
+        refreshing={loading}
       />
     </View>
   );

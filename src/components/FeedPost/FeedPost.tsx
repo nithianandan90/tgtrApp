@@ -73,9 +73,12 @@ const FeedPost = (props: IFeedPost) => {
         <Text style={styles.text} numberOfLines={3}>
           {event.description}
         </Text>
+        <Text style={styles.text} numberOfLines={3}>
+          Location: {event.location}
+        </Text>
 
         {/* Posted date */}
-        <Text>{dayjs(event.createdAt).fromNow()} Ago</Text>
+        <Text>{dayjs(event.createdAt).fromNow()}</Text>
       </View>
     </View>
   );
