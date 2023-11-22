@@ -50,6 +50,8 @@ export const getDeal = /* GraphQL */ `query GetDeal($id: ID!) {
     radius
     title
     description
+    location
+    image
     maxRadius
     expiryDate
     userID
@@ -90,6 +92,8 @@ export const listDeals = /* GraphQL */ `query ListDeals(
       radius
       title
       description
+      location
+      image
       maxRadius
       expiryDate
       userID
@@ -137,6 +141,8 @@ export const dealsByUserID = /* GraphQL */ `query DealsByUserID(
       radius
       title
       description
+      location
+      image
       maxRadius
       expiryDate
       userID
@@ -185,6 +191,8 @@ export const getUser = /* GraphQL */ `query GetUser($id: ID!) {
         radius
         title
         description
+        location
+        image
         maxRadius
         expiryDate
         userID

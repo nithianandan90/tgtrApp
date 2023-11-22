@@ -76,6 +76,8 @@ export const createDeal = /* GraphQL */ `mutation CreateDeal(
     radius
     title
     description
+    location
+    image
     maxRadius
     expiryDate
     userID
@@ -117,6 +119,8 @@ export const updateDeal = /* GraphQL */ `mutation UpdateDeal(
     radius
     title
     description
+    location
+    image
     maxRadius
     expiryDate
     userID
@@ -158,6 +162,8 @@ export const deleteDeal = /* GraphQL */ `mutation DeleteDeal(
     radius
     title
     description
+    location
+    image
     maxRadius
     expiryDate
     userID
@@ -210,6 +216,8 @@ export const createUser = /* GraphQL */ `mutation CreateUser(
         radius
         title
         description
+        location
+        image
         maxRadius
         expiryDate
         userID
@@ -251,6 +259,8 @@ export const updateUser = /* GraphQL */ `mutation UpdateUser(
         radius
         title
         description
+        location
+        image
         maxRadius
         expiryDate
         userID
@@ -292,6 +302,8 @@ export const deleteUser = /* GraphQL */ `mutation DeleteUser(
         radius
         title
         description
+        location
+        image
         maxRadius
         expiryDate
         userID

@@ -64,6 +64,8 @@ export const onCreateDeal = /* GraphQL */ `subscription OnCreateDeal($filter: Mo
     radius
     title
     description
+    location
+    image
     maxRadius
     expiryDate
     userID
@@ -102,6 +104,8 @@ export const onUpdateDeal = /* GraphQL */ `subscription OnUpdateDeal($filter: Mo
     radius
     title
     description
+    location
+    image
     maxRadius
     expiryDate
     userID
@@ -140,6 +144,8 @@ export const onDeleteDeal = /* GraphQL */ `subscription OnDeleteDeal($filter: Mo
     radius
     title
     description
+    location
+    image
     maxRadius
     expiryDate
     userID
@@ -189,6 +195,8 @@ export const onCreateUser = /* GraphQL */ `subscription OnCreateUser($filter: Mo
         radius
         title
         description
+        location
+        image
         maxRadius
         expiryDate
         userID
@@ -227,6 +235,8 @@ export const onUpdateUser = /* GraphQL */ `subscription OnUpdateUser($filter: Mo
         radius
         title
         description
+        location
+        image
         maxRadius
         expiryDate
         userID
@@ -265,6 +275,8 @@ export const onDeleteUser = /* GraphQL */ `subscription OnDeleteUser($filter: Mo
         radius
         title
         description
+        location
+        image
         maxRadius
         expiryDate
         userID

@@ -11,6 +11,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import ChatStackNavigator from './ChatStackNavigator';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import HomeScreen from '../screens/HomeScreen/HomeScreen';
+import CreatPostScreen from '../screens/CreatePostScreen/CreatPostScreen';
 
 const BottomTab = createBottomTabNavigator<RootTabParamList>();
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -26,6 +27,16 @@ const BottomTabNavigator = () => {
           headerShown: false,
           tabBarIcon: ({color}) => (
             <Ionicons name="chatbox-ellipses-outline" size={24} color={color} />
+          ),
+        }}
+      />
+      <BottomTab.Screen
+        name="CreatePost"
+        component={CreatPostScreen}
+        options={{
+          title: 'Create Event',
+          tabBarIcon: ({color}) => (
+            <Ionicons name="add" size={24} color={color} />
           ),
         }}
       />

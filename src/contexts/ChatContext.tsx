@@ -39,13 +39,13 @@ const ChatContextProvider = ({children}: {children: React.ReactNode}) => {
 
       setChatClient(client);
 
-      const globalChannel = client.channel('livestream', 'global', {
-        name: 'SubangChat',
-        image:
-          'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/1.jpg',
-      });
+      // const globalChannel = client.channel('livestream', 'global', {
+      //   name: 'SubangChat',
+      //   image:
+      //     'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/1.jpg',
+      // });
 
-      await globalChannel.watch();
+      // await globalChannel.watch();
     };
 
     initChat();
@@ -59,7 +59,19 @@ const ChatContextProvider = ({children}: {children: React.ReactNode}) => {
     };
   }, []);
 
-  const value = {chatClient, currentChannel, setCurrentChannel};
+  const createChat = async chatName => {
+    const client = StreamChat.getInstance('ebj4kzbc3uy5');
+    const globalChannel = client.channel('livestream', 'global', {
+      name: chatName,
+      image:
+        'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/1.jpg',
+    });
+    await globalChannel.create();
+
+    await globalChannel.watch();
+  };
+
+  const value = {chatClient, currentChannel, setCurrentChannel, createChat};
 
   console.log('chat client', chatClient);
 

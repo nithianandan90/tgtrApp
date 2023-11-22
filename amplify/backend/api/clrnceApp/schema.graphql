@@ -13,6 +13,8 @@ type Deal @model @auth(rules: [{allow: public}]) {
   radius: String
   title: String
   description: String
+  location: String
+  image: String
   maxRadius: Float
   expiryDate: AWSDateTime
   userID: ID! @index(name: "byUser")
